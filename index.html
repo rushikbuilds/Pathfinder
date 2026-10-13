@@ -19,10 +19,13 @@
             <div class="menu">
                 <h3>Algorithm</h3>
                 <div class="dropdown" data-action="algorithm">
-                    <button id="dropdownBtn">Depth First Search ▼</button>
+                    <button id="dropdownBtn" class="dropdown-btn" type="button">
+                        <span class="dropdown-label">Depth First Search</span>
+                        <span class="dropdown-chevron">▼</span>
+                    </button>
 
                     <div id="dropdownMenu" class="dropdown-menu">
-                        <div class="dropdown-item" data-value="dfs">Depth First Search</div>
+                        <div class="dropdown-item selected" data-value="dfs">Depth First Search</div>
                         <div class="dropdown-item" data-value="bfs">Breadth First Search</div>
                         <div class="dropdown-item" data-value="ucs">Uniform Cost Search</div>
                         <div class="dropdown-item" data-value="greedy">Best First Search</div>
@@ -33,11 +36,14 @@
             <div class="menu">
                 <h3>Heuristic</h3>
                 <div class="dropdown" data-action="heuristic">
-                    <button id="dropdownBtn">Manhattan Distance ▼</button>
+                    <button id="dropdownBtn" class="dropdown-btn" type="button">
+                        <span class="dropdown-label">Manhattan Distance</span>
+                        <span class="dropdown-chevron">▼</span>
+                    </button>
 
                     <div id="dropdownMenu" class="dropdown-menu">
                         <div class="dropdown-item" data-value="euclidian">Euclidian Distance</div>
-                        <div class="dropdown-item" data-value="manhattan">Manhattan Distance</div>
+                        <div class="dropdown-item selected" data-value="manhattan">Manhattan Distance</div>
                         <div class="dropdown-item" data-value="chebyshev">Chebyshev Distance</div>
                     </div>
                 </div>
@@ -95,25 +101,16 @@
             </div>
             <div class="menu">
                 <!-- <h3>Start Cell</h3> -->
-                <div class="submenu"
-                    style="display: flex; flex-direction: row; align-items: center; justify-content: center; gap: 18px; background: #232526;">
-                    <button class="btn-primary panel-btn" id="select-start-btn"
-                        style="max-width: 140px; min-width: 110px;">Select Start</button>
-                    <span id="start-cell-label"
-                        style="font-weight: 600; color: #06b6d4; background: rgba(59,130,246,0.08); padding: 4px 16px; border-radius: 0.4em; border: 1px solid rgba(59,130,246,0.18); font-size: 1.1em;">(0,
-                        0)</span>
+                <div class="coord-row">
+                    <button class="btn-primary panel-btn" id="select-start-btn" type="button">Select Start</button>
+                    <span id="start-cell-label" class="coord-badge coord-badge-start">(0, 0)</span>
                 </div>
             </div>
             <div class="menu">
                 <!-- <h3>Goal Cell</h3> -->
-                <div class="submenu"
-                    style="display: flex; flex-direction: row; align-items: center; justify-content: center; gap: 18px; background: #232526;">
-                    <button class="btn-primary panel-btn" id="select-goal-btn"
-                        style="max-width: 140px; min-width: 110px; background-image: linear-gradient(325deg, #6a00f4 0%, #a259ff 100%); color: #fff;">Select
-                        Goal</button>
-                    <span id="goal-cell-label"
-                        style="font-weight: 600; color: #a259ff; background: rgba(162,89,255,0.08); padding: 4px 16px; border-radius: 0.4em; border: 1px solid rgba(162,89,255,0.18); font-size: 1.1em;">(24,
-                        24)</span>
+                <div class="coord-row">
+                    <button class="btn-primary panel-btn" id="select-goal-btn" type="button">Select Goal</button>
+                    <span id="goal-cell-label" class="coord-badge coord-badge-goal">(24, 24)</span>
                 </div>
             </div>
         </div>
@@ -121,14 +118,11 @@
             <div class="grid-menu">
                 <button class="btn-primary btn-safe" value="run" onclick="run()">Run</button>
                 <button class="btn-primary btn-danger" disabled value="pause" onclick="pauseAlgorithm()">Pause</button>
-                <button class="btn-primary" value="clear" onclick="clearGrid()">clear</button>
+                <button class="btn-primary" value="clear" onclick="clearGrid()">Clear</button>
                 <button class="btn-primary btn-danger" value="reset" onclick="reset()">Reset</button>
             </div>
             <div class="grid" id="grid"></div>
-            <div id="status-bar"
-                style="text-align: center; padding: 10px; font-size: 1rem; font-weight: 600; color: #888;">
-                Ready
-            </div>
+            <div id="status-bar" class="status-bar">Ready</div>
         </div>
         <div class="steplog-section" id="steplog-section" style="display: none;">
             <div class="menu">
