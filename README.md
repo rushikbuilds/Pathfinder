@@ -1,53 +1,45 @@
-# Search Simulations
+# Pathfinding Visualizer
 
-An interactive web-based visualizer for exploring various pathfinding algorithms on a grid.
+An interactive web-based visualizer for exploring and comparing various pathfinding algorithms on a 2D grid.
 
 ## Overview
 
-This simulator demonstrates how different search algorithms navigate from a start point to a goal on a grid with obstacles. Watch in real-time as algorithms explore the environment, and compare their efficiency, path length, and exploration patterns.
+This visualizer demonstrates how different search algorithms navigate from a start point to a goal on a grid with obstacles. Watch in real-time as algorithms explore the environment, dynamically replan around emerging obstacles, and compare efficiency, path length, and exploration patterns.
 
 ## Algorithms
 
-- **DFS** (Depth First Search) - Explores deep along one path before backtracking. Memory-efficient but doesn't guarantee shortest path.
-- **BFS** (Breadth First Search) - Explores level by level. Guarantees shortest path in unweighted grids.
-- **UCS** (Uniform Cost Search) - Expands lowest-cost paths first. Guarantees optimal path with non-negative costs.
-- **Greedy** (Best First Search) - Uses heuristic to estimate closeness to goal. Fast but not guaranteed shortest.
-- **A\*** (A Star Search) - Combines path cost and heuristic estimate. Efficient and optimal with admissible heuristics.
+- **DFS** (Depth First Search) — Explores deep along one path before backtracking. Memory-efficient but does not guarantee the shortest path.
+- **BFS** (Breadth First Search) — Explores level by level. Guarantees the shortest path on unweighted grids.
+- **UCS** (Uniform Cost Search) — Expands lowest-cost paths first. Guarantees an optimal path with non-negative step costs.
+- **Greedy Best First Search** — Uses a heuristic to aggressively navigate toward the goal. Fast, but not guaranteed to find the shortest path.
+- **A\*** (A Star Search) — Combines actual path cost and heuristic estimate ($f(n) = g(n) + h(n)$). Efficient and optimal with admissible heuristics.
 
 ## Features
 
-- Interactive grid-based simulation environment
-- Multiple pathfinding algorithms to compare
-- Different heuristics (Euclidian, Manhattan, Chebyshev)
-- Real-time visualization of algorithm exploration
-- Configurable grid size, obstacles, and start/goal positions
-- Pause/resume and speed controls
-
-## Demo Screenshots
-
-Here are some screenshots of the simulator in action:
-
-### Screenshot 1
-![Screenshot 1](assets/demo1.png)
-
-### Screenshot 2
-![Screenshot 2](assets/demo2.png)
+- **Interactive Grid Environment**: Easily place start and goal cells, adjust obstacle density, and customize grid dimensions.
+- **Multiple Search Algorithms**: Compare DFS, BFS, UCS, Greedy Best-First, and A* in real time.
+- **Heuristic Choices**: Support for Manhattan, Euclidean, and Chebyshev distance metrics for informed search.
+- **Dynamic Replanning**: Real-time obstacle discovery and dynamic path recalculation.
+- **Performance Metrics**: Live step logs displaying visited cell count, actual path length, optimal path length, obstacle resets, and elapsed time.
+- **Playback Controls**: Run, pause, resume, clear, and reset with configurable execution speed delay.
 
 ## Getting Started
 
-1. Open `index.html` in your web browser
-2. Set your grid parameters and starting/goal positions
-3. Select an algorithm and heuristic
-4. Click start to visualize the pathfinding process
+1. Open `index.html` in any modern web browser (or serve locally using `python -m http.server` / any static server).
+2. Configure grid parameters, start/goal positions, and obstacle density.
+3. Select your desired algorithm and heuristic.
+4. Click **Run** to visualize the pathfinding process in real time.
 
-## Files
+## Project Structure
 
-- `app.js` - Main application logic
-- `pathFinder.js` / `pathFinderDynamic.js` - Algorithm implementations
-- `minHeap.js` - Priority queue for algorithms like A*
-- `script.js` - UI interactions and controls
-- `index.html` - Web interface
-- `style.css` - Styling
-- `constants.js` - Algorithm definitions and configurations
-- `settings.js` - Simulation settings
-- `utils.js` - Utility functions
+- `index.html` — Web user interface structure
+- `style/style.css` — Minimal and modern dark-mode stylesheet
+- `scripts/`
+  - `app.js` — Core application controller and grid state manager
+  - `script.js` — UI interactions, controls, and event listeners
+  - `pathFinder.js` — Static pathfinding algorithm implementations
+  - `pathFinderDynamic.js` — Dynamic replanning algorithm implementations
+  - `minHeap.js` — Priority queue data structure for optimal search
+  - `constants.js` — Algorithm metadata, heuristics, and mode definitions
+  - `settings.js` — Simulator configuration and state
+  - `utils.js` — Helper utilities
