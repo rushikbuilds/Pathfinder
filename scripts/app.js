@@ -283,7 +283,7 @@ export class App {
             this.settings.setStart(r, c);
             this.grid[r][c].classList.add("start");
             const startCellLabel = document.getElementById("start-cell-label");
-            startCellLabel.textContent = "(" + r.toString() + " ," + c.toString() + ")";
+            if (startCellLabel) startCellLabel.textContent = `(${r}, ${c})`;
             this.settings.setMode(MODE.IDLE);
             this.initialize();
             this.gridCopy = null;
@@ -294,7 +294,7 @@ export class App {
             this.settings.setGoal(r, c);
             this.grid[r][c].classList.add("goal");
             const goalCellLabel = document.getElementById("goal-cell-label");
-            goalCellLabel.textContent = "(" + r.toString() + " ," + c.toString() + ")";
+            if (goalCellLabel) goalCellLabel.textContent = `(${r}, ${c})`;
             this.settings.setMode(MODE.IDLE);
             this.initialize();
             this.gridCopy = null;

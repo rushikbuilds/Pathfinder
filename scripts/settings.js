@@ -26,7 +26,20 @@ export class Settings {
         algorithmInfo.querySelector("h4").textContent = ALGORITHM_MAP[algorithm] || algorithm.toUpperCase();
         algorithmInfo.querySelector("p").textContent = ALGORITHM_INFO[algorithm] || "No description available.";
 
-        if (algorithm !== ALGORITHM.GREEDY && algorithm !== ALGORITHM.ASTAR) {
+        const heuristicDropdown = document.querySelector('.dropdown[data-action="heuristic"]');
+        const heuristicBtn = heuristicDropdown ? heuristicDropdown.querySelector("#dropdownBtn") : null;
+        const heuristicMenu = heuristicDropdown ? heuristicDropdown.closest(".menu") : null;
+        const isHeuristicApplicable = (algorithm === ALGORITHM.GREEDY || algorithm === ALGORITHM.ASTAR);
+
+        if (heuristicBtn) {
+            heuristicBtn.disabled = !isHeuristicApplicable;
+            heuristicBtn.title = isHeuristicApplicable ? "" : "Heuristic applies to Best First Search and A* Search only";
+        }
+        if (heuristicMenu) {
+            heuristicMenu.classList.toggle("disabled-control", !isHeuristicApplicable);
+        }
+
+        if (!isHeuristicApplicable) {
             const heuristicInfo = document.getElementById("heuristic-info");
             if (heuristicInfo) {
                 heuristicInfo.remove();
@@ -67,6 +80,7 @@ export class Settings {
             this.app.clearGrid();
             this.app.clearObstacles();
         }
+        window.dispatchEvent(new CustomEvent("modechange", { detail: { mode } }));
     }
 
     setSize(size) {
