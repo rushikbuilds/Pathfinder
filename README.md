@@ -1,4 +1,4 @@
-# Pathfinding Visualizer
+# Pathfinder
 
 An interactive web-based visualizer for exploring various pathfinding algorithms on a 2D grid.
 
